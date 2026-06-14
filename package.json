@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:ghpages": "vite build --base /tower-of-hanoi/",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:ghpages",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
