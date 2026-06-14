@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tower of Hanoi - Interactive</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="header-left">
+                <div class="logo-group">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2v20 M12 6h-4v4h8V6z M12 12h-6v4h12v-4z"/>
+                    </svg>
+                    <h1>Tower of Hanoi</h1>
+                </div>
+                <span class="badge">Pyodide Engine</span>
+            </div>
+            <div class="controls">
+                <div class="control-widget">
+                    <span class="widget-label">Disks</span>
+                    <div class="custom-number-input">
+                        <button id="btn-dec-disks" class="icon-btn">-</button>
+                        <div id="disk-count-display">5</div>
+                        <button id="btn-inc-disks" class="icon-btn">+</button>
+                    </div>
+                </div>
+                
+                <div class="control-widget">
+                    <span class="widget-label">Speed</span>
+                    <select id="speed-select" class="custom-select">
+                        <option value="1500">Slow</option>
+                        <option value="500" selected>Normal</option>
+                        <option value="150">Fast</option>
+                        <option value="20">Instant</option>
+                    </select>
+                </div>
+                <div class="divider"></div>
+                <button id="btn-run" class="btn primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Run Script
+                </button>
+                <button id="btn-play-pause" class="btn secondary" disabled>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a2 2 0 0 1-4 0v-4M14 15v4a2 2 0 0 0 4 0v-4M10 9V5a2 2 0 0 1 4 0v4"></path><path d="M6 9h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"></path></svg>
+                    Animate
+                </button>
+                <button id="btn-reset" class="btn outline">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="left-pane">
+                <div class="editor-wrap">
+                    <div id="editor-container"></div>
+                </div>
+                <div class="console-wrap">
+                    <div class="pane-header">
+                        <span>Console Output</span>
+                        <button id="btn-clear-console" class="btn outline tiny">Clear</button>
+                    </div>
+                    <div id="console-output"></div>
+                </div>
+            </div>
+            
+            <div class="right-pane visualizer-pane">
+                <canvas id="draw-layer"></canvas>
+                <div class="towers-container" id="towers-container">
+                    <div class="peg-wrap" style="left: 16.666%;">
+                        <div class="peg-pole"></div>
+                        <div class="peg-base"></div>
+                    </div>
+                    <div class="peg-wrap" style="left: 50%;">
+                        <div class="peg-pole"></div>
+                        <div class="peg-base"></div>
+                    </div>
+                    <div class="peg-wrap" style="left: 83.333%;">
+                        <div class="peg-pole"></div>
+                        <div class="peg-base"></div>
+                    </div>
+                    <!-- Disks are generated inside towers-container -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
