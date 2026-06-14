@@ -2,6 +2,8 @@
 
 A compact, browser-only Tower of Hanoi demo that runs Python (Pyodide) and animates moves.
 
+Live demo: https://asterful.github.io/tower-of-hanoi/
+
 Quick start
 
 - Install:
